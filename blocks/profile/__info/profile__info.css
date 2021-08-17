@@ -1,0 +1,7 @@
+.profile__info {
+  display: grid;
+  grid-template-columns: minmax(min-content, max-content) min-content;
+  row-gap: 7px;
+  column-gap: 18px;
+  align-items: baseline;
+}
