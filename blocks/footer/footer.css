@@ -1,5 +1,6 @@
 .footer {
-  margin-top: 66px;
+  margin-top: auto;
+  padding-top: 66px;
   padding-bottom: 56px;
   color: #545454;
 }

@@ -1,0 +1,10 @@
+.edit-form__save-button {
+  margin: 48px 0 0 0;
+  padding: 14px 0;
+  width: 100%;
+  color: white;
+  background-color: #000;
+  border-radius: 2px;
+  border: none;
+  font-size: 18px;
+}

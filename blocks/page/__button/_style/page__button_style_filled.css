@@ -1,0 +1,7 @@
+.page__button_style_filled:hover {
+  opacity: 0.8;
+}
+
+.page__button_style_filled:active {
+  opacity: 0.5;
+}
