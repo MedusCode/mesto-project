@@ -1,0 +1,10 @@
+.card__photo-name {
+  font-weight: 900;
+  font-size: 24px;
+  color: #000;
+  margin: 0;
+  padding-right: 30px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}

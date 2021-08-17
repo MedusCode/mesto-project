@@ -1,3 +1,4 @@
 .page__button {
-  transition: 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
+  transition: transform 0.05s ease-in-out;
 }

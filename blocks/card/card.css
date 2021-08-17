@@ -1,0 +1,10 @@
+.card {
+  overflow: hidden;
+  background-color: #fff;
+  border-radius: 10px;
+  position: relative;
+}
+
+.card:hover .card__photo {
+  transform: scale(1.01) translate(-50%, -0.5%);
+}
