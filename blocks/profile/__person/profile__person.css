@@ -3,3 +3,10 @@
   align-items: center;
   padding-right: 50px;
 }
+
+@media screen and (max-width: 767px) {
+  .profile__person {
+    flex-direction: column;
+    padding: 0;
+  }
+}

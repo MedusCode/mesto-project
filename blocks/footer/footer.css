@@ -1,6 +1,12 @@
 .footer {
-  margin-top: auto;
-  padding-top: 66px;
+  margin-top: 66px;
   padding-bottom: 56px;
   color: #545454;
+}
+
+@media screen and (max-width: 767px) {
+  .footer {
+    margin-top: 48px;
+    padding-bottom: 36px;
+  }
 }

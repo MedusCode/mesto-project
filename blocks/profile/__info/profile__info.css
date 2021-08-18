@@ -5,3 +5,13 @@
   column-gap: 18px;
   align-items: baseline;
 }
+
+@media screen and (max-width: 767px) {
+  .profile__info {
+    justify-items: center;
+    column-gap: 10px;
+    transform: translate(23px, 0);
+    margin-bottom: 33px;
+    padding-right: 20px;
+  }
+}

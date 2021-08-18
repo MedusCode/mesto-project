@@ -3,3 +3,12 @@
   font-size: 18px;
   grid-column: 1/-1;
 }
+
+@media screen and (max-width: 767px) {
+  .profile__additional-info {
+    grid-column: 1/2;
+    font-size: 14px;
+    text-align: center;
+    min-height: 17px;
+  }
+}
