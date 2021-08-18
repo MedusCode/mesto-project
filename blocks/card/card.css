@@ -6,5 +6,5 @@
 }
 
 .card:hover .card__photo {
-  transform: scale(1.01) translate(-50%, -0.5%);
+  transform: scale(1.01) translate(0, -0.5%);
 }
