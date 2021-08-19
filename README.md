@@ -31,4 +31,4 @@
 
 **Ссылка GitHub Pages**
 
-* [Ссылка на GitHub Pages](https://meduscode.github.io/)
+* [Ссылка на GitHub Pages](https://meduscode.github.io/mesto-project/)
