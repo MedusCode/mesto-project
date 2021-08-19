@@ -8,6 +8,8 @@
 @import url(../blocks/page/__button/_style/page__button_style_like.css);
 @import url(../blocks/page/__button/_style/page__button_style_filled.css);
 @import url(../blocks/logo/logo.css);
+@import url(../blocks/logo/__name/logo__name.css);
+@import url(../blocks/logo/__country/logo__country.css);
 @import url(../blocks/logo/_black/logo_black.css);
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/__close-button/popup__close-button.css);

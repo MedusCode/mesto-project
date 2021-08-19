@@ -1,14 +1,15 @@
 .logo {
+  position: relative;
   display: block;
   width: 142px;
-  background-image: url(../../images/logo/logo.svg);
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
 .logo::after {
   content: '';
   display: block;
   padding-bottom: 23.23%;
+}
+
+.logo:hover .logo__country{
+  transform: rotate(-90deg) translate(-10%, -20%) scale(0.7);
 }

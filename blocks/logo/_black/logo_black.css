@@ -1,3 +1,9 @@
-.logo_black {
+.logo__black .logo__name{
   filter: brightness(0)
 }
+
+.logo__black .logo__country{
+  filter: brightness(0)
+}
+
+/* Добавил на будущие  */
