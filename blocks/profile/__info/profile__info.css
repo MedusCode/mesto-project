@@ -10,8 +10,7 @@
   .profile__info {
     justify-items: center;
     column-gap: 10px;
-    transform: translate(23px, 0);
+    grid-template-columns: 18px auto min-content;
     margin-bottom: 33px;
-    padding-right: 20px;
   }
 }
