@@ -1,6 +1,6 @@
 .profile__info {
   display: grid;
-  grid-template-columns: auto min-content;
+  grid-template-columns: fit-content(450px) min-content;
   row-gap: 7px;
   column-gap: 18px;
   align-items: baseline;
@@ -8,9 +8,8 @@
 
 @media screen and (max-width: 767px) {
   .profile__info {
-    justify-items: center;
     column-gap: 10px;
-    grid-template-columns: 18px auto min-content;
+    grid-template-columns: 18px fit-content(350px) min-content;
     margin-bottom: 33px;
   }
 }

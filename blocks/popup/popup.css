@@ -6,9 +6,6 @@
   transform: translate(-50%, -50%);
   z-index: 2;
   transform-style: preserve-3d;
-  border-radius: 10px;
-  background-color: #fff;
-  color: #000;
 }
 
 .popup::after {
@@ -22,3 +19,5 @@
   opacity: 0.5;
   transform: translateZ(-10px) translate(-50vw, -50vh);
 }
+
+/* подложка ломается ниже 320px, min-width не работает, width: 100% + 38px(paddings) тоже */

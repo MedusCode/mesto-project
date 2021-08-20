@@ -2,7 +2,7 @@
   box-sizing: border-box;
   width: 100%;
   min-height: 118px;
-  border-bottom: 1px solid #545454;
+  border-bottom: 1px solid rgba(84, 84, 84, 0.7);
   padding-top: 45px;
 }
 

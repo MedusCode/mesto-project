@@ -1,4 +1,5 @@
 .page__button {
+  cursor: pointer;
   transition-property: opacity, transform;
   transition-duration: 0.15s, 0.05s;
   transition-timing-function: ease-in-out;

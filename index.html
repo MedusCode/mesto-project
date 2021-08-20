@@ -15,10 +15,7 @@
 
     <!-- header -->
     <header class="header page__section">
-      <a class="logo header__logo" href="./index.html">
-        <div class="logo__name"></div>
-        <div class="logo__country"></div>  <!-- Для анимации -->
-      </a>
+      <a class="logo header__logo" href="./index.html"></a>
     </header>
 
     <main>
@@ -28,77 +25,56 @@
           <img class="profile__avatar" src="./images/avatar/avatar.jpg" alt="Аватар пользователя">
           <div class="profile__info">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <button class="profile__edit-button page__button page__button_style_transparent"></button>
+            <button class="profile__edit-button page__button page__button_style_transparent" type="button"></button>
             <p class="profile__additional-info">Исследователь океана</p>
           </div>
         </div>
-        <button class="profile__add-button page__button page__button_style_transparent"></button>
-        <div class="popup">
-          <form class="edit-form">
-            <h2 class="edit-form__heading">Редактировать профиль</h2>   <!-- Нужно ли оборачивать <fieldset> если по сути один? -->
-            <input class="edit-form__input" type="text" name="name" value="Жак-Ив Кусто" placeholder="Ваше имя" maxlength="30">
-            <input class="edit-form__input" type="text" name="additional-info" value="Исследователь океана" placeholder="О вас" maxlength="60">
-            <button class="edit-form__save-button page__button page__button_style_filled">Сохранить</button>
-          </form>
-          <button class="popup__close-button page__button page__button_style_transparent" type="submit"></button>
-        </div>
+        <button class="profile__add-button page__button page__button_style_transparent" type="button"></button>
       </section>
 
       <!-- cards -->
       <section class="cards page__section">
         <ul class="cards__list">
-          <li>
-            <div class="card">
-              <img class="card__photo" src="./images/photos/Karachaevsk.jpg" alt="Фотография пользователя">
-              <div class="card__info">
-                <h2 class="card__photo-name">Карачаевск</h2>
-                <button class="card__like-button page__button page__button_style_like"></button>
-              </div>
+          <li class="card">
+            <img class="card__photo" src="./images/photos/Karachaevsk.jpg" alt="Фотография пользователя">
+            <div class="card__info">
+              <h2 class="card__photo-name">Карачаевск</h2>
+              <button class="card__like-button page__button page__button_style_like" type="button"></button>
             </div>
           </li>
-          <li>
-            <div class="card">
-              <img class="card__photo" src="./images/photos/Elbrus.jpg" alt="Фотография пользователя">
-              <div class="card__info">
-                <h2 class="card__photo-name">Гора Эльбрус</h2>
-                <button class="card__like-button page__button page__button_style_like"></button>
-              </div>
+          <li class="card">
+            <img class="card__photo" src="./images/photos/Elbrus.jpg" alt="Фотография пользователя">
+            <div class="card__info">
+              <h2 class="card__photo-name">Гора Эльбрус</h2>
+              <button class="card__like-button page__button page__button_style_like" type="button"></button>
             </div>
           </li>
-          <li>
-            <div class="card">
-              <img class="card__photo" src="./images/photos/Dombay.jpg" alt="Фотография пользователя">
-              <div class="card__info">
-                <h2 class="card__photo-name">Домбай</h2>
-                <button class="card__like-button page__button page__button_style_like"></button>
-              </div>
+          <li class="card">
+            <img class="card__photo" src="./images/photos/Dombay.jpg" alt="Фотография пользователя">
+            <div class="card__info">
+              <h2 class="card__photo-name">Домбай</h2>
+              <button class="card__like-button page__button page__button_style_like" type="button"></button>
             </div>
           </li>
-          <li>
-            <div class="card">
-              <img class="card__photo" src="./images/photos/Elbrus.jpg" alt="Фотография пользователя">
-              <div class="card__info">
-                <h2 class="card__photo-name">Гора Эльбрус</h2>
-                <button class="card__like-button page__button page__button_style_like"></button>
-              </div>
+          <li class="card">
+            <img class="card__photo" src="./images/photos/Elbrus.jpg" alt="Фотография пользователя">
+            <div class="card__info">
+              <h2 class="card__photo-name">Гора Эльбрус</h2>
+              <button class="card__like-button page__button page__button_style_like" type="button"></button>
             </div>
           </li>
-          <li>
-            <div class="card">
-              <img class="card__photo" src="./images/photos/Dombay.jpg" alt="Фотография пользователя">
-              <div class="card__info">
-                <h2 class="card__photo-name">Домбай</h2>
-                <button class="card__like-button page__button page__button_style_like"></button>
-              </div>
+          <li class="card">
+            <img class="card__photo" src="./images/photos/Dombay.jpg" alt="Фотография пользователя">
+            <div class="card__info">
+              <h2 class="card__photo-name">Домбай</h2>
+              <button class="card__like-button page__button page__button_style_like" type="button"></button>
             </div>
           </li>
-          <li>
-            <div class="card">
-              <img class="card__photo" src="./images/photos/Karachaevsk.jpg" alt="Фотография пользователя">
-              <div class="card__info">
-                <h2 class="card__photo-name">Карачаево-Черкесия</h2>
-                <button class="card__like-button page__button page__button_style_like"></button>
-              </div>
+          <li class="card">
+            <img class="card__photo" src="./images/photos/Karachaevsk.jpg" alt="Фотография пользователя">
+            <div class="card__info">
+              <h2 class="card__photo-name">Карачаево-Черкесия</h2>
+              <button class="card__like-button page__button page__button_style_like" type="button"></button>
             </div>
           </li>
         </ul>
@@ -110,6 +86,20 @@
       <p class="footer__author">&copy; 2021 Андреев Никита</p>
     </footer>
 
+    <!-- popup(edit-form) -->
+    <section class="popup popup_opened">
+      <div class="popup__container popup__container_contain_edit-form">
+        <h2 class="popup__heading">Редактировать профиль</h2>
+        <form class="edit-form" name="edit-profile">
+          <input class="edit-form__input" type="text" name="name" value="Жак-Ив Кусто" placeholder="Ваше имя" maxlength="30">
+          <input class="edit-form__input" type="text" name="additional-info" value="Исследователь океана" placeholder="О вас" maxlength="60">
+          <button class="edit-form__save-button page__button page__button_style_filled" type="submit">Сохранить</button>
+        </form>
+        <button class="popup__close-button page__button page__button_style_transparent" type="button"></button>
+      </div>
+    </section>
+
+    <!-- Для код-ревьвера: Спасибо большое, очень понравилось ваше ревью. Все было понятно и полезно. Спасибо, что оценили мои труды xD Хорошего дня! -->
 
   </div>
 </body>

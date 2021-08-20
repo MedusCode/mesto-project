@@ -2,14 +2,35 @@
   position: relative;
   display: block;
   width: 142px;
+  height: 33px;
+}
+
+.logo::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 73.02%;
+  height: 79.57%;
+  background-image: url(../../images/logo/logo__name.svg);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .logo::after {
   content: '';
-  display: block;
-  padding-bottom: 23.23%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 24.52%;
+  height: 100%;
+  background-image: url(../../images/logo/logo__country.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: 0.35s ease-in-out;
 }
 
-.logo:hover .logo__country{
+.logo:hover::after{
   transform: rotate(-90deg) translate(-10%, -20%) scale(0.7);
 }

@@ -1,8 +1,8 @@
-.logo__black .logo__name{
+.logo_black::after{
   filter: brightness(0)
 }
 
-.logo__black .logo__country{
+.logo_black::before{
   filter: brightness(0)
 }
 
