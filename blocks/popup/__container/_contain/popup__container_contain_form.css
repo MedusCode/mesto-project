@@ -1,9 +1,9 @@
-.popup__container_contain_edit-form {
+.popup__container_contain_form {
   width: 430px;
 }
 
 @media screen and (max-width: 468px) {
-  .popup__container_contain_edit-form {
+  .popup__container_contain_form {
     width: calc(100vw - 38px);
   }
 }

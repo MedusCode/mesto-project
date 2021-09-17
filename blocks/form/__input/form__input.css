@@ -1,4 +1,4 @@
-.edit-form__input {
+.form__input {
   padding: 0 0 10px 0;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, .2);
@@ -7,11 +7,11 @@
   margin: 0 0 29px 0;
 }
 
-.edit-form__input:last-of-type {
+.form__input:last-of-type {
   margin: 0;
 }
 
-.edit-form__input:focus {
+.form__input:focus {
   outline: none;
   border-bottom: 1px solid rgba(0, 0, 0, .5);
 }
