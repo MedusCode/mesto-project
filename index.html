@@ -87,29 +87,32 @@
     </footer>
 
     <!-- popup(edit-form) -->
-    <section class="popup popup_opened">
+    <section class="popup popup_opened" id="popup-edit-form">
       <div class="popup__container popup__container_contain_form">
         <h2 class="popup__heading">Редактировать профиль</h2>
-        <form class="form" name="edit-profile">
-          <input class="form__input" type="text" name="name" value="Жак-Ив Кусто" placeholder="Ваше имя" maxlength="30">
-          <input class="form__input" type="text" name="additional-info" value="Исследователь океана" placeholder="О вас" maxlength="60">
+        <form class="form" id="edit-form" name="edit-profile">
+          <input class="form__input" id="name-input" type="text" name="name" placeholder="Ваше имя" maxlength="30" required>
+          <input class="form__input" id="additional-info-input" type="text" name="additional-info" placeholder="О вас" maxlength="60" required>
           <button class="form__save-button page__button page__button_style_filled" type="submit">Сохранить</button>
         </form>
         <button class="popup__close-button page__button page__button_style_transparent" type="button"></button>
       </div>
     </section>
 
-    <section class="popup">
+    <!-- popup(add-form) -->
+    <section class="popup" id="popup-add-form">
       <div class="popup__container popup__container_contain_form">
         <h2 class="popup__heading">Новое место</h2>
-        <form class="form" name="edit-profile">
-          <input class="form__input" type="text" name="name" placeholder="Название" maxlength="30">
-          <input class="form__input" type="text" name="additional-info" placeholder="Ссылка на картинку" maxlength="60">
+        <form class="form" id="add-form" name="edit-profile">
+          <input class="form__input" type="text" name="name" placeholder="Название" maxlength="100" required>
+          <input class="form__input" type="text" name="additional-info" placeholder="Ссылка на картинку" required>
           <button class="form__save-button page__button page__button_style_filled" type="submit">Создать</button>
         </form>
         <button class="popup__close-button page__button page__button_style_transparent" type="button"></button>
       </div>
     </section>
+
+    <script src="./scripts/index.js"></script>
 
   </div>
 </body>
