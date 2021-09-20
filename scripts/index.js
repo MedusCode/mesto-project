@@ -1,6 +1,7 @@
 const popupEditForm = document.querySelector('#popup-edit-form');
 const popupAddForm = document.querySelector('#popup-add-form');
 const popupFullPhoto = document.querySelector('#popup-full-photo');
+const FullPhoto = popupFullPhoto.querySelector('.full-photo__photo');
 const editButton = document.querySelector('.profile__edit-button');
 const addButton = document.querySelector('.profile__add-button');
 const editForm = popupEditForm.querySelector('.form');
@@ -51,11 +52,13 @@ function EditFormSubmitHandler (evt) {
 function AddFormSubmitHandler (evt) {
   evt.preventDefault();
   const newPhotoCard = photoCardTemplate.querySelector('.card').cloneNode(true);
-  newPhotoCard.querySelector('.card__photo').src = photoLinkInput.value;
-  newPhotoCard.querySelector('.card__photo-name').textContent = photoNameInput.value;
-  newPhotoCard.querySelector('.card__photo').addEventListener('click', (event) => {
-    popupFullPhoto.querySelector('.full-photo__photo').src = event.target.src;
-    popupFullPhoto.querySelector('.full-photo__name').textContent = event.target.parentElement.querySelector('.card__photo-name').textContent;
+  const newPhoto = newPhotoCard.querySelector('.card__photo');
+  const newName = newPhotoCard.querySelector('.card__photo-name');
+  newPhoto.src = photoLinkInput.value;
+  newName.textContent = photoNameInput.value;
+  newPhoto.addEventListener('click', (event) => {
+    FullPhoto.src = event.target.src;
+    popupFullPhoto.querySelector('.full-photo__name').textContent = newName.textContent;
     popupFullPhoto.classList.add('popup_opened');
   })
   newPhotoCard.querySelector('.card__like-button').addEventListener('click', (event) => {
@@ -88,7 +91,7 @@ addButton.addEventListener('click', () => {
 document.querySelectorAll('.popup__close-button').forEach((CloseButton) => {
   CloseButton.addEventListener ('click', (event) => {
     event.target.closest('.popup').classList.remove('popup_opened');
-    popupFullPhoto.querySelector('.full-photo__photo').src = '';
+    FullPhoto.src = '';
   })
 });
 
