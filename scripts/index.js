@@ -1,21 +1,81 @@
-function formSubmitHandler (evt) {
+const popupEditForm = document.querySelector('#popup-edit-form');
+const popupAddForm = document.querySelector('#popup-add-form');
+const editButton = document.querySelector('.profile__edit-button');
+const addButton = document.querySelector('.profile__add-button');
+const editForm = popupEditForm.querySelector('.form');
+const nameInput = editForm.querySelector('#name-input');
+const addInfoInput = editForm.querySelector('#additional-info-input');
+const addForm = popupAddForm.querySelector('.form');
+const photoNameInput = addForm.querySelector('#photo-name-input');
+const photoLinkInput = addForm.querySelector('#photo-link-input');
+const profileName = document.querySelector('.profile__name');
+const profileAddInfo = document.querySelector('.profile__additional-info');
+const cardsList = document.querySelector('.cards__list');
+const photoCardTemplate = document.querySelector('#photo-card-template').content;
+const initialCards = [
+  {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+];
+
+function isValidUrl(url)
+{
+  var objRE = /(^https?:\/\/)?[a-z0-9~_\-\.]+\.[a-z]{2,9}(\/|:|\?[!-~]*)?$/i;
+  return objRE.test(url);
+}
+
+function EditFormSubmitHandler (evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileAddInfo.textContent = addInfoInput.value;
   popupEditForm.classList.remove('popup_opened');
 }
 
-const popupEditForm = document.querySelector('#popup-edit-form');
-const popupAddForm = document.querySelector('#popup-add-form');
-const editButton = document.querySelector('.profile__edit-button');
-const addButton = document.querySelector('.profile__add-button');
-const editForm = popupEditForm.querySelector('#edit-form');
-const nameInput = editForm.querySelector('#name-input');
-const profileName = document.querySelector('.profile__name');
-const addInfoInput = editForm.querySelector('#additional-info-input');
-const profileAddInfo = document.querySelector('.profile__additional-info');
+function AddFormSubmitHandler (evt) {
+  evt.preventDefault();
+  const newPhotoCard = photoCardTemplate.querySelector('.card').cloneNode(true);
+  newPhotoCard.querySelector('.card__photo').src = photoLinkInput.value;
+  newPhotoCard.querySelector('.card__photo-name').textContent = photoNameInput.value;
+  photoLinkInput.value = '';
+  photoNameInput.value = '';
+  cardsList.prepend(newPhotoCard);
+  popupAddForm.classList.remove('popup_opened');
+}
 
-console.log(popupAddForm);
+initialCards.forEach((element) => {
+  const newPhotoCard = photoCardTemplate.querySelector('.card').cloneNode(true);
+  newPhotoCard.querySelector('.card__photo').src = element.link;
+  newPhotoCard.querySelector('.card__photo-name').textContent = element.name;
+  cardsList.prepend(newPhotoCard);
+})
+
+document.querySelectorAll('.popup__close-button').forEach((CloseButton) => {
+  CloseButton.addEventListener ('click', (event) => {
+    EventTarget = event.target;
+    EventTarget.closest('.popup').classList.remove('popup_opened');
+  })
+});
 
 editButton.addEventListener('click', () => {
   popupEditForm.classList.add('popup_opened');
@@ -27,12 +87,8 @@ addButton.addEventListener('click', () => {
   popupAddForm.classList.add('popup_opened');
 })
 
-document.querySelectorAll('.popup__close-button').forEach((CloseButton) => {
-  CloseButton.addEventListener ('click', () => {
-    document.querySelectorAll('.popup').forEach((popup) => {
-      popup.classList.remove('popup_opened');
-    })
-  })
-})
+editForm.addEventListener('submit', EditFormSubmitHandler);
 
-editForm.addEventListener('submit', formSubmitHandler);
+addForm.addEventListener('submit', AddFormSubmitHandler);
+
+
