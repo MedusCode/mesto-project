@@ -44,7 +44,7 @@
     </footer>
 
     <!-- popup(edit-form) -->
-    <section class="popup popup_opened" id="popup-edit-form">
+    <section class="popup" id="popup-edit-form">
       <div class="popup__container popup__container_contain_form">
         <h2 class="popup__heading">Редактировать профиль</h2>
         <form class="form" name="edit-profile">
@@ -73,6 +73,7 @@
   <template id="photo-card-template">
     <li class="card">
       <img class="card__photo" src="" alt="Фотография пользователя">
+      <button class="card__trash-button page__button page__button_style_transparent"></button>
       <div class="card__info">
         <h2 class="card__photo-name"></h2>
         <button class="card__like-button page__button page__button_style_like" type="button"></button>

@@ -54,6 +54,9 @@ function AddFormSubmitHandler (evt) {
   newPhotoCard.querySelector('.card__like-button').addEventListener('click', (event) => {
     event.target.classList.toggle('card__like-button_active');
   })
+  newPhotoCard.querySelector('.card__trash-button').addEventListener('click', (event) => {
+    event.target.closest('.card').remove();
+  })
   photoLinkInput.value = '';
   photoNameInput.value = '';
   cardsList.prepend(newPhotoCard);
@@ -67,6 +70,9 @@ initialCards.forEach((element) => {
   newPhotoCard.querySelector('.card__photo-name').textContent = element.name;
   newPhotoCard.querySelector('.card__like-button').addEventListener('click', (event) => {
     event.target.classList.toggle('card__like-button_active');
+  })
+  newPhotoCard.querySelector('.card__trash-button').addEventListener('click', (event) => {
+    event.target.closest('.card').remove();
   })
   cardsList.prepend(newPhotoCard);
 })
