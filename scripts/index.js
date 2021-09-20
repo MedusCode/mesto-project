@@ -70,6 +70,7 @@ function AddFormSubmitHandler (evt) {
   popupAddForm.classList.remove('popup_opened');
 }
 
+
 editForm.addEventListener('submit', EditFormSubmitHandler);
 
 addForm.addEventListener('submit', AddFormSubmitHandler);
@@ -87,6 +88,7 @@ addButton.addEventListener('click', () => {
 document.querySelectorAll('.popup__close-button').forEach((CloseButton) => {
   CloseButton.addEventListener ('click', (event) => {
     event.target.closest('.popup').classList.remove('popup_opened');
+    popupFullPhoto.querySelector('.full-photo__photo').src = '';
   })
 });
 
