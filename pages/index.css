@@ -36,6 +36,9 @@
 @import url(../blocks/card/__photo-name/card__photo-name.css);
 @import url(../blocks/card/__like-button/card__like-button.css);
 @import url(../blocks/card/__like-button/_active/card__like-button_active.css);
+@import url(../blocks/full-photo/full-photo.css);
+@import url(../blocks/full-photo/__photo/full-photo__photo.css);
+@import url(../blocks/full-photo/full-photo__name/full-photo__name.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__author/footer__author.css);
 
