@@ -1,7 +1,7 @@
 const popupEditForm = document.querySelector('#popup-edit-form');
 const popupAddForm = document.querySelector('#popup-add-form');
 const popupFullPhoto = document.querySelector('#popup-full-photo');
-const FullPhoto = popupFullPhoto.querySelector('.full-photo__photo');
+const fullPhoto = popupFullPhoto.querySelector('.full-photo__photo');
 const editButton = document.querySelector('.profile__edit-button');
 const addButton = document.querySelector('.profile__add-button');
 const editForm = popupEditForm.querySelector('.form');
@@ -42,14 +42,14 @@ const initialCards = [
 ];
 
 
-function EditFormSubmitHandler (evt) {
+function editFormSubmitHandler (evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileAddInfo.textContent = addInfoInput.value;
   popupEditForm.classList.remove('popup_opened');
 }
 
-function AddFormSubmitHandler (evt) {
+function addFormSubmitHandler (evt) {
   evt.preventDefault();
   const newPhotoCard = photoCardTemplate.querySelector('.card').cloneNode(true);
   const newPhoto = newPhotoCard.querySelector('.card__photo');
@@ -57,7 +57,7 @@ function AddFormSubmitHandler (evt) {
   newPhoto.src = photoLinkInput.value;
   newName.textContent = photoNameInput.value;
   newPhoto.addEventListener('click', (event) => {
-    FullPhoto.src = event.target.src;
+    fullPhoto.src = event.target.src;
     popupFullPhoto.querySelector('.full-photo__name').textContent = newName.textContent;
     popupFullPhoto.classList.add('popup_opened');
   })
@@ -74,9 +74,9 @@ function AddFormSubmitHandler (evt) {
 }
 
 
-editForm.addEventListener('submit', EditFormSubmitHandler);
+editForm.addEventListener('submit', editFormSubmitHandler);
 
-addForm.addEventListener('submit', AddFormSubmitHandler);
+addForm.addEventListener('submit', addFormSubmitHandler);
 
 editButton.addEventListener('click', () => {
   nameInput.value = profileName.textContent;
@@ -88,10 +88,10 @@ addButton.addEventListener('click', () => {
   popupAddForm.classList.add('popup_opened');
 })
 
-document.querySelectorAll('.popup__close-button').forEach((CloseButton) => {
-  CloseButton.addEventListener ('click', (event) => {
+document.querySelectorAll('.popup__close-button').forEach((closeButton) => {
+  closeButton.addEventListener ('click', (event) => {
     event.target.closest('.popup').classList.remove('popup_opened');
-    FullPhoto.src = '';
+    fullPhoto.src = '';
   })
 });
 
