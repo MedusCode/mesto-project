@@ -56,8 +56,8 @@ function addFormSubmitHandler (evt) {
   const newName = newPhotoCard.querySelector('.card__photo-name');
   newPhoto.src = photoLinkInput.value;
   newName.textContent = photoNameInput.value;
-  newPhoto.addEventListener('click', (event) => {
-    fullPhoto.src = event.target.src;
+  newPhoto.addEventListener('click', () => {
+    fullPhoto.src = newPhoto.src;
     popupFullPhoto.querySelector('.full-photo__name').textContent = newName.textContent;
     popupFullPhoto.classList.add('popup_opened');
   })
@@ -91,7 +91,6 @@ addButton.addEventListener('click', () => {
 document.querySelectorAll('.popup__close-button').forEach((closeButton) => {
   closeButton.addEventListener ('click', (event) => {
     event.target.closest('.popup').classList.remove('popup_opened');
-    fullPhoto.src = '';
   })
 });
 
