@@ -1,7 +1,6 @@
 const popupEditForm = document.querySelector('#popup-edit-form');
 const popupAddForm = document.querySelector('#popup-add-form');
 const popupFullPhoto = document.querySelector('#popup-full-photo');
-const fullPhoto = popupFullPhoto.querySelector('.full-photo__photo');
 const editButton = document.querySelector('.profile__edit-button');
 const addButton = document.querySelector('.profile__add-button');
 const editForm = popupEditForm.querySelector('.form');
@@ -57,15 +56,15 @@ function addFormSubmitHandler (evt) {
   newPhoto.src = photoLinkInput.value;
   newName.textContent = photoNameInput.value;
   newPhoto.addEventListener('click', () => {
-    fullPhoto.src = newPhoto.src;
+    popupFullPhoto.querySelector('.full-photo__photo').src = newPhoto.src;
     popupFullPhoto.querySelector('.full-photo__name').textContent = newName.textContent;
     popupFullPhoto.classList.add('popup_opened');
   })
   newPhotoCard.querySelector('.card__like-button').addEventListener('click', (event) => {
     event.target.classList.toggle('card__like-button_active');
   })
-  newPhotoCard.querySelector('.card__trash-button').addEventListener('click', (event) => {
-    event.target.closest('.card').remove();
+  newPhotoCard.querySelector('.card__trash-button').addEventListener('click', () => {
+    newPhotoCard.remove();
   })
   photoLinkInput.value = '';
   photoNameInput.value = '';
