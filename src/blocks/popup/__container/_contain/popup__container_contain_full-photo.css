@@ -1,0 +1,8 @@
+.popup__container_contain_full-photo {
+  background-color: transparent;
+  box-shadow: none;
+  color: #fff;
+  padding: 0;
+  border-radius: 0;
+  min-width: 0;
+}
