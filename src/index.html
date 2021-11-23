@@ -48,7 +48,9 @@
         <h2 class="popup__heading">Редактировать профиль</h2>
         <form class="form" name="edit-profile">
           <input class="form__input form__input_type_name" type="text" name="name" placeholder="Ваше имя" maxlength="30" required>
+          <p class="form__validation-error">error</p>
           <input class="form__input form__input_type_additional-info" type="text" name="additional-info" placeholder="О вас" maxlength="60" required>
+          <p class="form__validation-error">error</p>
           <button class="form__save-button page__button page__button_style_filled" type="submit">Сохранить</button>
         </form>
         <button class="popup__close-button page__button page__button_style_transparent" type="button"></button>
@@ -61,8 +63,10 @@
         <h2 class="popup__heading">Новое место</h2>
         <form class="form" name="edit-profile">
           <input class="form__input form__input_type_photo-name" type="text" name="photo-name" placeholder="Название" maxlength="100" required>
+          <p class="form__validation-error">error</p>
           <input class="form__input form__input_type_photo-link" type="text" name="photo-link" placeholder="Ссылка на картинку" required>
-          <button class="form__save-button page__button page__button_style_filled" type="submit">Создать</button>
+          <p class="form__validation-error">error</p>
+          <button class="form__save-button form__save-button_disabled page__button page__button_style_filled" type="submit" disabled>Создать</button>
         </form>
         <button class="popup__close-button page__button page__button_style_transparent" type="button"></button>
       </div>
