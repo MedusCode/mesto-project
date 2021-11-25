@@ -6,10 +6,6 @@
   font-size: 14px;
 }
 
-.form__input:invalid {
-  border-color: #FF0000;
-}
-
 .form__input:focus {
   outline: none;
   border-bottom: 1px solid rgba(0, 0, 0, .5);

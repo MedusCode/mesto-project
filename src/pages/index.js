@@ -1,8 +1,9 @@
 import '../pages/index.css';
 
-import { openPopup, closePopup } from './components/model.js';
-import { createCard } from './components/card.js';
-import { createInitialCards } from './components/initial-cards.js';
+import { openPopup, closePopup } from '../components/model.js';
+import { createCard } from '../components/card.js';
+import { enableValidation } from '../components/validate.js'
+import { createInitialCards } from '../components/utils.js';
 
 const popupEditForm = document.querySelector('.popup_type_edit-profile');
 const popupAddForm = document.querySelector('.popup_type_add-card');
@@ -16,7 +17,7 @@ const photoNameInput = addForm.querySelector('.form__input_type_photo-name');
 const photoLinkInput = addForm.querySelector('.form__input_type_photo-link');
 const profileName = document.querySelector('.profile__name');
 const profileAddInfo = document.querySelector('.profile__additional-info');
-export const cardsList = document.querySelector('.cards__list');
+const cardsList = document.querySelector('.cards__list');
 
 function editFormSubmitHandler(evt) {
   evt.preventDefault();
@@ -44,13 +45,23 @@ editButton.addEventListener('click', () => {
 });
 
 addButton.addEventListener('click', () => {
+  addForm.reset();
   openPopup(popupAddForm);
 });
 
 document.querySelectorAll('.popup__close-button').forEach((closeButton) => {
-  closeButton.addEventListener('click', (event) => {
-    closePopup(event.target.closest('.popup'));
+  closeButton.addEventListener('click', (evt) => {
+    closePopup(evt.target.closest('.popup'));
   });
 });
 
+enableValidation({
+  errorSpanSelector: '.form__validation-error',
+  submitButtonSelector: '.form__save-button',
+  inputErrorClass: 'form__input_invalid',
+  openButtonSelector: '.form-open-button'
+});
+
 createInitialCards();
+
+

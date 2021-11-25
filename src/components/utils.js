@@ -1,5 +1,6 @@
 import { createCard } from './card.js';
-import { cardsList } from '../index.js';
+
+const cardsList = document.querySelector('.cards__list');
 
 const initialCards = [
   {

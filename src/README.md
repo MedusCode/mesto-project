@@ -14,7 +14,7 @@
 
 **Технологии**
 
-В проекте используется html, css и js языки
+В проекте используются html, css
 * display: grid
 * display: flex
 * реакция на наведение (:hover)
@@ -25,6 +25,19 @@
 * работа с DOM
 * Локальная обработка форм
 
+В проекте используется webpack
+* webpack-cli
+* webpack-dev-server
+* babel
+* html-webpack-plugin
+* css-loader
+* mini-css-extract-plugin
+* postcss-loader
+* autoprefixer
+* cssnano
+
+Также в проекте используется чисты js
+
 
 **Планы по доработке проекта**
 
@@ -33,4 +46,4 @@
 
 **Ссылка GitHub Pages**
 
-* [Ссылка на GitHub Pages](https://meduscode.github.io/mesto-project/)
+* [Ссылка на GitHub Pages](https://meduscode.github.io/mesto-project/) (Пока не работает)

@@ -1,6 +1,6 @@
 .form__save-button {
   box-sizing: border-box;
-  margin: 16.34px 0 0 0;
+  margin: 11.34px 0 0 0;
   padding: 14px 0;
   width: 100%;
   min-height: 50px;
@@ -17,4 +17,12 @@
     margin: 45px 0 0 0;
     min-height: 46px;
   }
+}
+
+.form__save-button:disabled {
+  border: 1px solid #000;
+  background-color: transparent;
+  color: #000;
+  opacity: 0.2;
+  cursor: default;
 }
