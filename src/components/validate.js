@@ -5,6 +5,10 @@ function enableValidation(config) {
     return Array.from(form.querySelectorAll('input'));
   }
 
+  function getSubmitButton(form) {
+    return form.querySelector(config.submitButtonSelector);
+  }
+
   function isInputValid(input) {
     return input.validity.valid;
   }
@@ -42,13 +46,18 @@ function enableValidation(config) {
   }
 
   function changeButtonStatus(form) {
-    const submitButton = form.querySelector(config.submitButtonSelector);
+    const submitButton = getSubmitButton(form);
     if (hasInvalidInput(form)) {
       submitButton.disabled = true;
     }
     else {
       submitButton.disabled = false;
     }
+  }
+
+  function disableButton(form) {
+    const submitButton = getSubmitButton(form);
+    submitButton.disabled = true;
   }
 
   function inputHandler(evt) {
@@ -58,36 +67,31 @@ function enableValidation(config) {
     changeButtonStatus(form);
   }
 
-  forms.forEach(form => {
-    form.addEventListener('input', inputHandler);
-  });
-
-  function removeErrorMassages() {
-    const errorSpans = document.querySelectorAll(config.errorSpanSelector);
+  function removeErrorMassages(form) {
+    const errorSpans = form.querySelectorAll(config.errorSpanSelector);
     errorSpans.forEach(errorSpan => {
       errorSpan.textContent = '';
     });
   }
 
-  function removeInputsErrorClasses() {
-    const inputs = getInputList(document);
+  function removeInputsErrorClasses(form) {
+    const inputs = getInputList(form);
     inputs.forEach(input => {
       removeInputErrorClass(input);
     });
   }
 
-  function resetValidation() {
-    removeErrorMassages();
-    removeInputsErrorClasses();
-    forms.forEach(form => {
-      changeButtonStatus(form);
-    })
+  function resetValidation(evt) {
+    const form = evt.currentTarget;
+    disableButton(form)
+    removeErrorMassages(form);
+    removeInputsErrorClasses(form);
   }
 
-  const openFormButtons = document.querySelectorAll(config.openButtonSelector);
-  openFormButtons.forEach(button => {
-    button.addEventListener('click', resetValidation);
-  })
+  forms.forEach(form => {
+    form.addEventListener('input', inputHandler);
+    form.addEventListener('reset', resetValidation);
+  });
 }
 
 export { enableValidation };

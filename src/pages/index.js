@@ -1,6 +1,6 @@
 import '../pages/index.css';
 
-import { openPopup, closePopup } from '../components/model.js';
+import { openPopup, closePopup, setPopupsListeners } from '../components/model.js';
 import { createCard } from '../components/card.js';
 import { enableValidation } from '../components/validate.js'
 import { createInitialCards } from '../components/utils.js';
@@ -18,6 +18,7 @@ const photoLinkInput = addForm.querySelector('.form__input_type_photo-link');
 const profileName = document.querySelector('.profile__name');
 const profileAddInfo = document.querySelector('.profile__additional-info');
 const cardsList = document.querySelector('.cards__list');
+const submitButtonSelector = '.form__save-button';
 
 function editFormSubmitHandler(evt) {
   evt.preventDefault();
@@ -29,8 +30,6 @@ function editFormSubmitHandler(evt) {
 function addFormSubmitHandler(evt) {
   evt.preventDefault();
   cardsList.prepend(createCard(photoLinkInput.value, photoNameInput.value));
-  photoLinkInput.value = '';
-  photoNameInput.value = '';
   closePopup(popupAddForm);
 }
 
@@ -39,6 +38,8 @@ editForm.addEventListener('submit', editFormSubmitHandler);
 addForm.addEventListener('submit', addFormSubmitHandler);
 
 editButton.addEventListener('click', () => {
+  editForm.reset();
+  editForm.querySelector(submitButtonSelector).disabled = false;
   nameInput.value = profileName.textContent;
   addInfoInput.value = profileAddInfo.textContent;
   openPopup(popupEditForm);
@@ -49,17 +50,12 @@ addButton.addEventListener('click', () => {
   openPopup(popupAddForm);
 });
 
-document.querySelectorAll('.popup__close-button').forEach((closeButton) => {
-  closeButton.addEventListener('click', (evt) => {
-    closePopup(evt.target.closest('.popup'));
-  });
-});
+setPopupsListeners();
 
 enableValidation({
   errorSpanSelector: '.form__validation-error',
-  submitButtonSelector: '.form__save-button',
+  submitButtonSelector: submitButtonSelector,
   inputErrorClass: 'form__input_invalid',
-  openButtonSelector: '.form-open-button'
 });
 
 createInitialCards();

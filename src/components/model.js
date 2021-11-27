@@ -1,57 +1,57 @@
-function isCursorOnOverlay(evt) {
-  const poupContainerRect = evt.currentTarget.querySelector('.popup__container').getBoundingClientRect();
-  const cursorXPosition = evt.clientX;
-  const cursorYPosition = evt.clientY;
-  return (cursorYPosition < poupContainerRect.top || cursorYPosition > poupContainerRect.bottom || cursorXPosition > poupContainerRect.right || cursorXPosition < poupContainerRect.left);
-}
+function setPopupsListeners() {
+  let mouseDownCaught = false;
 
-function pointerMoveHandler(evt) {
-  const closeButton = evt.currentTarget.querySelector('.popup__close-button');
-  if (isCursorOnOverlay(evt)) {
-    closeButton.classList.add('popup__close-button_hover');
+  function removeMouseUpHandler(popup) {
+    popup.removeEventListener('mouseup', mouseUpHandler);
   }
-  else {
-    closeButton.classList.remove('popup__close-button_hover');
-  }
-}
 
-function pointerUpHandler(evt) {
-  const popup = evt.currentTarget;
-  if (isCursorOnOverlay(evt)) {
+  function mouseUpHandler(evt) {
+    const popup = evt.currentTarget;
+    if (evt.target === popup) {
+      closePopup(popup);
+      removeMouseUpHandler(popup);
+    }
+    else {
+      removeMouseUpHandler(popup);
+    }
+  }
+
+  function mouseDownHandler(evt) {
+    mouseDownCaught = true;
+    const popup = evt.currentTarget;
+    if (evt.target === popup) {
+      popup.addEventListener('mouseup', mouseUpHandler);
+    }
+  }
+
+  function overlayClickHandler(popup) {
+    if (mouseDownCaught) {
+      mouseDownCaught = false;
+      return;
+    }
+
+    closePopup(popup);
+    console.log('hey');
+  }
+
+  function closeButtonClickHandler(popup) {
     closePopup(popup);
   }
-  else {
-    popup.removeEventListener('mouseup', pointerUpHandler);
-    popup.removeEventListener('touchend', pointerUpHandler);
-  }
-}
 
-function pointerDownHandler(evt) {
-  const popup = evt.currentTarget;
-  if (isCursorOnOverlay(evt)) {
-    popup.addEventListener('mouseup', pointerUpHandler);
-    popup.addEventListener('touchend', pointerUpHandler);
+  function clickHandler(evt) {
+    const popup = evt.currentTarget;
+    if (evt.target === popup) {
+      overlayClickHandler(popup);
+    }
+    else if (evt.target.classList.contains('popup__close-button')) {
+      closeButtonClickHandler(popup);
+    }
   }
-  else {
-    popup.removeEventListener('mousemove', pointerMoveHandler);
-  }
-}
 
-function addOverlayClickListeners(popup) {
-  popup.addEventListener('mousedown', pointerDownHandler);
-  popup.addEventListener('touchstart', pointerDownHandler);
-  popup.addEventListener('mousemove', pointerMoveHandler);
-  popup.addEventListener('mouseup', evt => {
-    evt.currentTarget.addEventListener('mousemove', pointerMoveHandler);
+  document.querySelectorAll('.popup').forEach(popup => {
+    popup.addEventListener('mousedown', mouseDownHandler); // Чтобы попап не закрывался, например, при неаккуратном коприровании текста.
+    popup.addEventListener('click', clickHandler); // Если не поймано событие mousedown, то будет отрабатывать обработчик события click. К примеру, на мобильных устройствах.
   });
-}
-
-function removeOverlayClickListeners(popup) {
-  popup.removeEventListener('mousedown', pointerDownHandler);
-  popup.removeEventListener('mouseup', pointerUpHandler);
-  popup.removeEventListener('touchstart', pointerDownHandler);
-  popup.removeEventListener('touchend', pointerUpHandler);
-  popup.removeEventListener('mousemove', pointerMoveHandler);
 }
 
 function closePopupEscHandler(evt) {
@@ -62,14 +62,12 @@ function closePopupEscHandler(evt) {
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
-  addOverlayClickListeners(popup);
   document.addEventListener('keydown', closePopupEscHandler);
 }
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
-  removeOverlayClickListeners(popup);
   document.removeEventListener('keydown', closePopupEscHandler);
 }
 
-export { openPopup, closePopup };
+export { openPopup, closePopup, setPopupsListeners };
