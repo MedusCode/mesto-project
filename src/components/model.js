@@ -70,4 +70,16 @@ function closePopup(popup) {
   document.removeEventListener('keydown', closePopupEscHandler);
 }
 
-export { openPopup, closePopup, setPopupsListeners };
+const serverErrorPopup = document.querySelector('.popup_type_server-error');
+const serverErrorMessage = document.querySelector('.server-error__message');
+
+function openServerErrorPopup(errorMessage) {
+  const popupOpened = document.querySelector('.popup_opened');
+  if (popupOpened){
+    closePopup(popupOpened);
+  }
+  serverErrorMessage.textContent = errorMessage;
+  openPopup(serverErrorPopup);
+}
+
+export { openPopup, closePopup, setPopupsListeners, openServerErrorPopup };
