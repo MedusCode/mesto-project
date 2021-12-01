@@ -3,7 +3,8 @@ import '../pages/index.css';
 import { openPopup, closePopup, setPopupsListeners } from '../components/model.js';
 import { createCard } from '../components/card.js';
 import { enableValidation } from '../components/validate.js'
-import { createInitialCards } from '../components/utils.js';
+import { createInitialCards, setProfileValues } from '../components/utils.js';
+import { patchProfileInfo, postNewCard } from '../components/api.js';
 
 const popupEditForm = document.querySelector('.popup_type_edit-profile');
 const popupAddForm = document.querySelector('.popup_type_add-card');
@@ -22,14 +23,20 @@ const submitButtonSelector = '.form__save-button';
 
 function editFormSubmitHandler(evt) {
   evt.preventDefault();
-  profileName.textContent = nameInput.value;
-  profileAddInfo.textContent = addInfoInput.value;
+  patchProfileInfo(nameInput.value, addInfoInput.value)
+    .then(info => {
+      profileName.textContent = info.name;
+      profileAddInfo.textContent = info.about;
+    })
   closePopup(popupEditForm);
 }
 
 function addFormSubmitHandler(evt) {
   evt.preventDefault();
-  cardsList.prepend(createCard(photoLinkInput.value, photoNameInput.value));
+  postNewCard(photoNameInput.value, photoLinkInput.value)
+    .then(card => {
+      cardsList.prepend(createCard(card.name, card.link, card._id));
+    })
   closePopup(popupAddForm);
 }
 
@@ -50,14 +57,16 @@ addButton.addEventListener('click', () => {
   openPopup(popupAddForm);
 });
 
-setPopupsListeners();
-
 enableValidation({
   errorSpanSelector: '.form__validation-error',
   submitButtonSelector: submitButtonSelector,
   inputErrorClass: 'form__input_invalid',
 });
 
+setPopupsListeners();
+
 createInitialCards();
+
+setProfileValues();
 
 

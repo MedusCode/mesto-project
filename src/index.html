@@ -21,7 +21,9 @@
       <!-- profile -->
       <section class="profile page__section">
         <div class="profile__person">
-          <img class="profile__avatar" src="<%=require('./images/avatar/avatar.jpg')%>" alt="Аватар пользователя">
+          <div class="profile__avatar-container">
+            <img class="profile__avatar" src="<%=require('./images/avatar/avatar.jpg')%>" alt="Аватар пользователя">
+          </div>
           <div class="profile__info">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
             <button class="profile__edit-button page__button page__button_style_transparent form-open-button" type="button"></button>
@@ -100,11 +102,11 @@
   <template id="photo-card-template">
     <li class="card">
       <img class="card__photo" src="" alt="Фотография пользователя">
-      <button class="card__trash-button page__button page__button_style_transparent"></button>
       <div class="card__info">
         <h2 class="card__photo-name"></h2>
-        <button class="card__like-button page__button page__button_style_like" type="button"></button>
+        <button class="card__like-button page__button page__button_style_like"></button>
       </div>
+      <!-- <button class="card__trash-button page__button page__button_style_transparent"></button> -->
     </li>
   </template>
 
