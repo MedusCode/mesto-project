@@ -31,7 +31,6 @@ function setPopupsListeners() {
     }
 
     closePopup(popup);
-    console.log('hey');
   }
 
   function closeButtonClickHandler(popup) {

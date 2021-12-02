@@ -67,6 +67,10 @@ function dislikeCard(cardId) {
   return manipulateJsonFromServer(`cards/likes/${cardId}`, 'DELETE');
 }
 
+function patchProfileAvatar(avatar) {
+  return manipulateJsonFromServer('users/me/avatar', 'PATCH', JSON.stringify({
+    avatar: avatar,
+  }));
+}
 
-
-export { getUserId, getInitialCards, getProfileInfo, patchProfileInfo, postNewCard, deleteCard, likeCard, dislikeCard };
+export { getUserId, getInitialCards, getProfileInfo, patchProfileInfo, postNewCard, deleteCard, likeCard, dislikeCard, patchProfileAvatar };

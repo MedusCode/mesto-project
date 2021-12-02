@@ -1,6 +1,8 @@
-.server-error__reload-link {
+.popup__accept-button {
   display: block;
   box-sizing: border-box;
+  width: 100%;
+  margin: 32px 0 0;
   padding: 14px;
   min-height: 50px;
   color: white;
@@ -13,7 +15,7 @@
 }
 
 @media screen and (max-width: 767px) {
-  .server-error__reload-link {
+  .popup__accept-button {
     font-size: 14px;
     min-height: 46px;
   }
