@@ -23,21 +23,29 @@ const submitButtonSelector = '.form__save-button';
 
 function editFormSubmitHandler(evt) {
   evt.preventDefault();
+  const submitButton = evt.currentTarget.querySelector(submitButtonSelector);
+  const submitButtonText = submitButton.textContent
+  submitButton.textContent = 'Сохранение...';
   patchProfileInfo(nameInput.value, addInfoInput.value)
     .then(info => {
       profileName.textContent = info.name;
       profileAddInfo.textContent = info.about;
+      closePopup(popupEditForm);
+      submitButton.textContent = submitButtonText;
     })
-  closePopup(popupEditForm);
 }
 
 function addFormSubmitHandler(evt) {
   evt.preventDefault();
+  const submitButton = evt.currentTarget.querySelector(submitButtonSelector);
+  const submitButtonText = submitButton.textContent
+  submitButton.textContent = 'Сохранение...';
   postNewCard(photoNameInput.value, photoLinkInput.value)
     .then(card => {
-      cardsList.prepend(createCard(card.name, card.link, card._id));
+      cardsList.prepend(createCard(card));
+      closePopup(popupAddForm);
+      submitButton.textContent = submitButtonText;
     })
-  closePopup(popupAddForm);
 }
 
 editForm.addEventListener('submit', editFormSubmitHandler);

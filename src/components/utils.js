@@ -21,12 +21,7 @@ function createInitialCards() {
       getUserId()
         .then(userId => {
           initialCards.reverse().forEach(card => {
-            if (card.owner._id === userId) {
-              cardsList.prepend(createCard(card.name, card.link, card._id));
-            }
-            else {
-              cardsList.prepend(createCard(card.name, card.link));
-            }
+            cardsList.prepend(createCard(card, userId));
           });
         })
     })

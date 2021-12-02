@@ -59,6 +59,14 @@ function deleteCard(cardId) {
   return manipulateJsonFromServer(`cards/${cardId}`, 'DELETE');
 }
 
+function likeCard(cardId) {
+  return manipulateJsonFromServer(`cards/likes/${cardId}`, 'PUT');
+}
+
+function dislikeCard(cardId) {
+  return manipulateJsonFromServer(`cards/likes/${cardId}`, 'DELETE');
+}
 
 
-export { getUserId, getInitialCards, getProfileInfo, patchProfileInfo, postNewCard, deleteCard };
+
+export { getUserId, getInitialCards, getProfileInfo, patchProfileInfo, postNewCard, deleteCard, likeCard, dislikeCard };
