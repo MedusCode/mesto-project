@@ -3,7 +3,6 @@
 ### Обзор
 * Описание проекта и его функциональности
 * Технологии
-* Планы по доработке проекта
 * Ссылка GitHub Pages
 
 
@@ -35,15 +34,11 @@
 * postcss-loader
 * autoprefixer
 * cssnano
+* gh-pages
 
-Также в проекте используется чисты js
-
-
-**Планы по доработке проекта**
-
-Планиурется подключить проект к серверу.
+Также в проекте используется чистый js и реализовано подключения к серверу
 
 
 **Ссылка GitHub Pages**
 
-* [Ссылка на GitHub Pages](https://meduscode.github.io/mesto-project/) (Пока не работает)
+* [Ссылка на GitHub Pages](https://meduscode.github.io/mesto-project/)
