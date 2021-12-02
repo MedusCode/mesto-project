@@ -48,8 +48,12 @@
 @import url(../blocks/card/__trash-button/card__trash-button.css);
 @import url(../blocks/card/__info/card__info.css);
 @import url(../blocks/card/__photo-name/card__photo-name.css);
+@import url(../blocks/card/__like-container/card__like-container.css);
 @import url(../blocks/card/__like-button/card__like-button.css);
 @import url(../blocks/card/__like-button/_active/card__like-button_active.css);
+@import url(../blocks/card/__like-button/_counter-shown/card__like-button_counter-shown.css);
+@import url(../blocks/card/__like-counter/card__like-counter.css);
+@import url(../blocks/card/__like-counter/_shown/card__like-counter_shown.css);
 
 @import url(../blocks/full-photo/full-photo.css);
 @import url(../blocks/full-photo/__photo/full-photo__photo.css);
