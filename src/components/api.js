@@ -1,5 +1,3 @@
-import { openServerErrorPopup } from './model.js'
-
 const config = {
   server: 'https://nomoreparties.co/v1/',
   cohortId: 'plus-cohort-4',
@@ -22,14 +20,6 @@ function manipulateJsonFromServer(source, method = 'GET', body = null) {
       else {
         return Promise.reject(`${res.status}: ${res.statusText}`);
       }
-    })
-    .catch(openServerErrorPopup)
-}
-
-function getUserId() {
-  return manipulateJsonFromServer('users/me')
-    .then(profile => {
-      return profile._id;
     })
 }
 
@@ -73,4 +63,4 @@ function patchProfileAvatar(avatar) {
   }));
 }
 
-export { getUserId, getInitialCards, getProfileInfo, patchProfileInfo, postNewCard, deleteCard, likeCard, dislikeCard, patchProfileAvatar };
+export { getInitialCards, getProfileInfo, patchProfileInfo, postNewCard, deleteCard, likeCard, dislikeCard, patchProfileAvatar };

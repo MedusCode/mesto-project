@@ -1,4 +1,5 @@
-import { openPopup, closePopup } from './model.js';
+import { openPopup, closePopup } from './utils.js';
+import { openServerErrorPopup } from './modal.js';
 import { deleteCard } from './api.js';
 
 const deleteCardPopup = document.querySelector('.popup_type_delete-card');
@@ -9,8 +10,9 @@ function deleteCardHandler(evt) {
   deleteCard(button.cardId)
     .then(() => {
       button.card.remove();
-      closePopup(document.querySelector('.popup_opened'));
+      closePopup(deleteCardPopup);
     })
+    .catch(openServerErrorPopup);
 }
 
 function addTrashButton(newPhotoCard, cardId) {

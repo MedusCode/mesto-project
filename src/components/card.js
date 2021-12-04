@@ -1,17 +1,18 @@
-import { openPopup } from './model.js';
+import { openPopup } from './utils.js';
 import { setInitialLikes, checkLikesCounter, likeCardHandler } from './like-card.js'
 import { addTrashButton } from './trash-button.js';
 
 const photoCardTemplate = document.querySelector('#photo-card-template').content;
 const popupFullPhoto = document.querySelector('.popup_type_full-photo');
+const fullPhoto = popupFullPhoto.querySelector('.full-photo__photo');
+const fullPhotoName = popupFullPhoto.querySelector('.full-photo__name');
 
 function checkForClass(target, checkingClass) {
   return target.classList.contains(checkingClass);
 }
 
 function openFullPhotoPopup(newPhoto, newName) {
-  const fullPhoto = popupFullPhoto.querySelector('.full-photo__photo');
-  const fullPhotoName = popupFullPhoto.querySelector('.full-photo__name');
+  fullPhoto.src = '';
   fullPhoto.src = newPhoto.src;
   fullPhoto.alt = newPhoto.alt;
   fullPhotoName.textContent = newName.textContent;
@@ -27,7 +28,7 @@ function createCard(card, userId) {
   newName.textContent = card.name;
   setInitialLikes(newPhotoCard, card, userId);
   checkLikesCounter(newPhotoCard, card);
-  if (card.owner._id === userId || !userId) {
+  if (card.owner._id === userId) {
     addTrashButton(newPhotoCard, card._id);
   }
   newPhotoCard.addEventListener('click', (evt) => {

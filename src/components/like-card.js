@@ -1,4 +1,5 @@
 import { likeCard, dislikeCard } from './api.js';
+import { openServerErrorPopup } from './modal.js';
 
 function updateLikesCounter(newPhotoCard, card) {
   const likeCounter = newPhotoCard.querySelector('.card__like-counter');
@@ -37,6 +38,7 @@ function likeCardHandler(likeButton, newPhotoCard, card) {
         likeButton.classList.remove('card__like-button_active');
         checkLikesCounter(newPhotoCard, card);
       })
+      .catch(openServerErrorPopup);
   }
   else {
     likeCard(card._id)
@@ -44,6 +46,7 @@ function likeCardHandler(likeButton, newPhotoCard, card) {
         likeButton.classList.add('card__like-button_active');
         checkLikesCounter(newPhotoCard, card);
       })
+      .catch(openServerErrorPopup);
   }
 }
 

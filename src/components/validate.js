@@ -2,7 +2,7 @@ function enableValidation(config) {
   const forms = Array.from(document.forms);
 
   function getInputList(form) {
-    return Array.from(form.querySelectorAll('input'));
+    return Array.from(form.querySelectorAll(config.inputSelector));
   }
 
   function getSubmitButton(form) {

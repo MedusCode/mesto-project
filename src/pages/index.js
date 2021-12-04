@@ -1,10 +1,12 @@
 import '../pages/index.css';
 
-import { openPopup, closePopup, setPopupsListeners } from '../components/model.js';
+import { setPopupsListeners, openServerErrorPopup } from '../components/modal.js';
+import { openPopup, closePopup } from '../components/utils.js';
 import { createCard } from '../components/card.js';
 import { enableValidation } from '../components/validate.js'
-import { createInitialCards, setProfileValues } from '../components/utils.js';
-import { patchProfileInfo, postNewCard, patchProfileAvatar } from '../components/api.js';
+import { patchProfileInfo, postNewCard, patchProfileAvatar, getInitialCards, getProfileInfo } from '../components/api.js';
+
+export let userId;
 
 const editButton = document.querySelector('.profile__edit-button');
 const popupEditForm = document.querySelector('.popup_type_edit-profile');
@@ -26,6 +28,9 @@ const changeAvatarForm = popupChangeAvatarForm.querySelector('.form');
 const avatarLinkInput = changeAvatarForm.querySelector('.form__input_type_change-avatar');
 const avatar = document.querySelector('.profile__avatar');
 
+const profileAdditionalInfo = document.querySelector('.profile__additional-info');
+const profileAvatar = document.querySelector('.profile__avatar');
+
 const cardsList = document.querySelector('.cards__list');
 const submitButtonSelector = '.form__save-button';
 
@@ -39,6 +44,9 @@ function editFormSubmitHandler(evt) {
       profileName.textContent = info.name;
       profileAddInfo.textContent = info.about;
       closePopup(popupEditForm);
+    })
+    .catch(openServerErrorPopup)
+    .finally(() => {
       submitButton.textContent = submitButtonText;
     });
 }
@@ -50,8 +58,11 @@ function addFormSubmitHandler(evt) {
   submitButton.textContent = 'Сохранение...';
   postNewCard(photoNameInput.value, photoLinkInput.value)
     .then(card => {
-      cardsList.prepend(createCard(card));
+      cardsList.prepend(createCard(card, userId));
       closePopup(popupAddForm);
+    })
+    .catch(openServerErrorPopup)
+    .finally(() => {
       submitButton.textContent = submitButtonText;
     });
 }
@@ -65,6 +76,9 @@ function changeAvatarFormSubmitHandler(evt) {
     .then(profile => {
       avatar.src = profile.avatar;
       closePopup(popupChangeAvatarForm);
+    })
+    .catch(openServerErrorPopup)
+    .finally(() => {
       submitButton.textContent = submitButtonText;
     });
 }
@@ -94,15 +108,26 @@ changeAvatarButton.addEventListener('click', () => {
 })
 
 enableValidation({
+  inputSelector: '.form__input',
   errorSpanSelector: '.form__validation-error',
   submitButtonSelector: submitButtonSelector,
   inputErrorClass: 'form__input_invalid',
 });
 
+getProfileInfo()
+  .then(profileInfo => {
+    profileName.textContent = profileInfo.name;
+    profileAdditionalInfo.textContent = profileInfo.about;
+    profileAvatar.src = profileInfo.avatar;
+    userId = profileInfo._id;
+    getInitialCards()     // Сделал Promise в promis'e, чтобы карточки не загружались до получения userId
+      .then(initialCards => {
+        initialCards.reverse().forEach(card => {
+          cardsList.prepend(createCard(card, userId));
+        });
+      })
+      .catch(openServerErrorPopup);
+  })
+  .catch(openServerErrorPopup);
+
 setPopupsListeners();
-
-createInitialCards();
-
-setProfileValues();
-
-

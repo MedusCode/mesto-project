@@ -1,3 +1,5 @@
+import { openPopup, closePopup } from './utils.js';
+
 function setPopupsListeners() {
   let mouseDownCaught = false;
 
@@ -59,26 +61,12 @@ function closePopupEscHandler(evt) {
   }
 }
 
-function openPopup(popup) {
-  popup.classList.add('popup_opened');
-  document.addEventListener('keydown', closePopupEscHandler);
-}
-
-function closePopup(popup) {
-  popup.classList.remove('popup_opened');
-  document.removeEventListener('keydown', closePopupEscHandler);
-}
-
 const serverErrorPopup = document.querySelector('.popup_type_server-error');
 const serverErrorMessage = document.querySelector('.server-error__message');
 
 function openServerErrorPopup(errorMessage) {
-  const popupOpened = document.querySelector('.popup_opened');
-  if (popupOpened){
-    closePopup(popupOpened);
-  }
   serverErrorMessage.textContent = errorMessage;
   openPopup(serverErrorPopup);
 }
 
-export { openPopup, closePopup, setPopupsListeners, openServerErrorPopup };
+export { setPopupsListeners, openServerErrorPopup, closePopupEscHandler };

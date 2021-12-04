@@ -1,30 +1,13 @@
-import { createCard } from './card.js';
-import { getUserId, getInitialCards, getProfileInfo } from './api.js';
+import { closePopupEscHandler } from './modal.js';
 
-const profileName = document.querySelector('.profile__name');
-const profileAdditionalInfo = document.querySelector('.profile__additional-info');
-const profileAvatar = document.querySelector('.profile__avatar');
-const cardsList = document.querySelector('.cards__list');
-
-function setProfileValues() {
-  getProfileInfo()
-    .then(profileInfo => {
-      profileName.textContent = profileInfo.name;
-      profileAdditionalInfo.textContent = profileInfo.about;
-      profileAvatar.src = profileInfo.avatar;
-    })
+function openPopup(popup) {
+  popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupEscHandler);
 }
 
-function createInitialCards() {
-  getInitialCards()
-    .then(initialCards => {
-      getUserId()
-        .then(userId => {
-          initialCards.reverse().forEach(card => {
-            cardsList.prepend(createCard(card, userId));
-          });
-        })
-    })
+function closePopup(popup) {
+  popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupEscHandler);
 }
 
-export { createInitialCards, setProfileValues, };
+export { openPopup, closePopup };
